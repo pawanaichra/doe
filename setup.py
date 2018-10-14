@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
     name="doe",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/pawanaichra/doe",
     author="Pawan Aichra",
     author_email="aichrapawan@gmail.com",
