@@ -11,7 +11,7 @@ setuptools.setup(
     license='MIT',
     include_package_data=True,
     packages=setuptools.find_packages(),
-    install_requires=[],
+    install_requires=['numpy', 'pandas', 'scipy', 'PTable'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
