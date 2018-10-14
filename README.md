@@ -19,15 +19,15 @@ pip install doe
 And you are done.
 
 ## TO-DO
-    - [x] Completely Randomized Design
-    - [ ] Randomized Complete Block Design
-    - [ ] Randomized Complete Block Design with missing values
-    - [ ] Latin Square Design
-    - [ ] Graeco-Latin Square Design
-    - [ ] Balanced Incomplete Block Design
-    - [ ] Factorial Designs
-    - [ ] Tests
+ - [x] Completely Randomized Design
+ - [ ] Randomized Complete Block Design
+ - [ ] Randomized Complete Block Design with missing values
+ - [ ] Latin Square Design
+ - [ ] Graeco-Latin Square Design
+ - [ ] Balanced Incomplete Block Design
+ - [ ] Factorial Designs
+ - [ ] Tests
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
