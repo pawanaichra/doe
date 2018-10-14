@@ -1,2 +1,33 @@
-# doe
-Design of Experiments and Analysis
+# Design of Experiments and Analysis
+This python library gives you the power to do analysis of experiments easily and quickly.
+
+## Getting Started
+### Prerequisites
+```
+Python 3.7
+```
+### Installing
+```
+pip install doe
+```
+### How to use
+```
+>>> import doe
+>>> model = doe.crd("data.csv")
+>>> model.print()
+```
+And you are done.
+
+## TO-DO
+    - [x] Completely Randomized Design
+    - [ ] Randomized Complete Block Design
+    - [ ] Randomized Complete Block Design with missing values
+    - [ ] Latin Square Design
+    - [ ] Graeco-Latin Square Design
+    - [ ] Balanced Incomplete Block Design
+    - [ ] Factorial Designs
+    - [ ] Tests
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
