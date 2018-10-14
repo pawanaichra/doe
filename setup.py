@@ -13,9 +13,9 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[],
     classifiers=[
-        'Development Status :: 1 - Alpha',
+        'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.7',
-        'Topic :: Design of Experiments :: Analysis',
+        'Topic :: Scientific/Engineering :: Mathematics',
     ],
 )
