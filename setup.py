@@ -1,13 +1,19 @@
 import setuptools
 setuptools.setup(
     name="doe",
-    version="0.1.1",
+    version="0.1.2",
     url="https://github.com/pawanaichra/doe",
     author="Pawan Aichra",
     author_email="aichrapawan@gmail.com",
-    description="A simple library for design of experiments and analysis",
+    description="A simple library for design of experiments and analysis in Python",
     long_description=open('README.md').read(),
-    keywords='design of experiments analysis doe',
+    keywords=[
+        'DOE',
+        'design of experiments',
+        'experimental design',
+        'analysis of experiments',
+        'crd rcbd latin square'
+        ],
     license='MIT',
     include_package_data=True,
     packages=setuptools.find_packages(),
@@ -17,5 +23,7 @@ setuptools.setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering :: Mathematics',
+        'Intended Audience :: Education',
+        'Intended Audience :: Science/Research',
     ],
 )
