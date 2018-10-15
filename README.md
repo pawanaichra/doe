@@ -20,9 +20,9 @@ And you are done.
 
 ## TO-DO
  - [x] Completely Randomized Design
- - [ ] Randomized Complete Block Design
+ - [x] Randomized Complete Block Design
  - [ ] Randomized Complete Block Design with missing values
- - [ ] Latin Square Design
+ - [x] Latin Square Design
  - [ ] Graeco-Latin Square Design
  - [ ] Balanced Incomplete Block Design
  - [ ] Factorial Designs
