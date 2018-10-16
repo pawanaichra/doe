@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import scipy.stats
 from prettytable import PrettyTable
+from prettytable import MSWORD_FRIENDLY
 class crd():
 	def __init__(self, file_name, alpha=0.05):
 		dataset = pd.read_csv(file_name)
@@ -21,10 +22,18 @@ class crd():
 		self.ms_error = self.ss_error/self.df_error
 		self.F = self.ms_treatments/self.ms_error
 		self.p_value = 1-scipy.stats.f.cdf(self.F, dfn=self.df_treatments, dfd=self.df_error)
+		self.x = PrettyTable()
+		self.x.set_style(MSWORD_FRIENDLY)
+		self.x.field_names = ["Source of Variation", "Sum of squares", "Degrees of Freedom", "Mean Square", "F", "p value"]
+		self.x.float_format["Sum of squares"] = ' 10.2'
+		self.x.float_format["Mean Square"] = ' 10.2'
+		self.x.float_format["F"] = ' 10.2'
+		self.x.float_format["p value"] = ' 10.4'
+		self.x.add_row(["Treatments", self.ss_treatments, self.df_treatments, self.ms_treatments, self.F, self.p_value])
+		self.x.add_row(["Error", self.ss_error, self.df_error, self.ms_error, " ", " "])
+		self.x.add_row(["Total", self.ss_total, self.df_total, " ", " ", " "])
 	def print(self):
-		x = PrettyTable()
-		x.field_names = ["Source of Variation", "Sum of squares", "Degrees of Freedom", "Mean Square", "F", "p value"]
-		x.add_row(["Treatments", self.ss_treatments, self.df_treatments, self.ms_treatments, self.F, self.p_value])
-		x.add_row(["Error", self.ss_error, self.df_error, self.ms_error, " ", " "])
-		x.add_row(["Total", self.ss_total, self.df_total, " ", " ", " "])
-		print(x)
+		print(self.x)
+	def export(self):
+		with open('result.csv', 'w') as csvFile:
+			csvFile.write(self.x.get_string())

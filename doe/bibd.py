@@ -3,22 +3,34 @@ import numpy as np
 import scipy.stats
 from prettytable import PrettyTable
 from prettytable import MSWORD_FRIENDLY
-class rcbd():
+class bibd():
 	def __init__(self, file_name, alpha=0.05):
 		dataset = pd.read_csv(file_name)
+		missing=dataset.isna().sum(axis = 1)[0]
 		data = dataset.iloc[:,1:].values
 		data = data.astype(np.float)
 		self.no_of_treatments = np.size(data, 1)
 		self.blocks = np.size(data, 0)
-		sum = np.sum(data)
-		bias = sum*sum/(self.no_of_treatments*self.blocks)
-		self.ss_total = np.sum(np.square(data))-bias
-		self.ss_treatments = np.sum(np.square(np.sum(data, axis=0)))/self.blocks-bias
-		self.ss_blocks = np.sum(np.square(np.sum(data, axis=1)))/self.no_of_treatments-bias
-		self.ss_error = self.ss_total - self.ss_treatments-self.ss_blocks
-		self.df_total = self.no_of_treatments*self.blocks-1
+		k=self.no_of_treatments-missing
+		sum = np.nansum(data)
+		N=self.blocks*k
+		r=N/self.no_of_treatments
+		lambd = r*(k-1)/(self.no_of_treatments-1)
+		bias = sum*sum/(N)
+		self.ss_total = np.nansum(np.square(data))-bias
+		self.ss_blocks = np.nansum(np.square(np.nansum(data, axis=1)))/k-bias
+		self.ss_treatments=0
+		for i in range(self.no_of_treatments):
+			temp=np.nansum(data, axis=0)[i]
+			for j in range(self.blocks):
+				if not (np.isnan(data[j][i])):
+					temp-=(np.nansum(data, axis=1)[j])/k
+			self.ss_treatments+=temp*temp
+		self.ss_treatments=self.ss_treatments*k/(lambd*self.no_of_treatments)
+		self.ss_error = self.ss_total - self.ss_blocks - self.ss_treatments
+		self.df_total = N-1
 		self.df_treatments = self.no_of_treatments - 1
-		self.df_blocks = self.blocks - 1
+		self.df_blocks=self.blocks-1
 		self.df_error = self.df_total - self.df_treatments - self.df_blocks
 		self.ms_treatments = self.ss_treatments/self.df_treatments
 		self.ms_blocks = self.ss_blocks/self.df_blocks

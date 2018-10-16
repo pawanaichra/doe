@@ -24,9 +24,10 @@ And you are done.
  - [ ] Randomized Complete Block Design with missing values
  - [x] Latin Square Design
  - [ ] Graeco-Latin Square Design
- - [ ] Balanced Incomplete Block Design
+ - [x] Balanced Incomplete Block Design
  - [ ] Factorial Designs
  - [ ] Tests
+ - [x] Export in excel file
 
 ## License
 
